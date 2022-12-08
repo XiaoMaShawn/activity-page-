@@ -8,10 +8,11 @@ import CartoonImage from '../../assets/cartoon.jpg'
 import FoodImage from '../../assets/food.jpg'
 import LifeImage from '../../assets/life.jpg'
 import MovieImage from '../../assets/movie.png'
+import styles from './styles.module.scss'
 
 function SecondSection() {
   return (
-    <div>
+    <div className={styles.secondSection}>
       {/* tabs */}
       <ul>
         <li>Cartoon</li>
