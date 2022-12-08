@@ -4,7 +4,7 @@
 
 // };
 
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import CartoonImage from '../../assets/cartoon.jpg'
 import FoodImage from '../../assets/food.jpg'
 import LifeImage from '../../assets/life.jpg'
@@ -31,8 +31,17 @@ const tabs = [
   }
 ]
 
+
 function SecondSection() {
   const [activeTab, setActiveTab] = useState<string>('cartoon');
+
+  const activate = (key: string) => {
+    setActiveTab(key)
+    const tabContentEl = document.querySelector(`[data-id=${key}]`);//care about the usage about [] and `` in querySelector
+    if (tabContentEl) {
+      tabContentEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
   return (
     <div className={styles.secondSection}>
@@ -40,7 +49,7 @@ function SecondSection() {
       <ul>
         {tabs.map((tab) => {
           return (
-            <li key={tab.key} onClick={() => setActiveTab(tab.key)}>
+            <li key={tab.key} onClick={() => activate(tab.key)}>
               <span>{tab.title}</span>
               <span className={classNames(styles.line, { [styles.visible]: activeTab == tab.key })} />
             </li>
@@ -50,22 +59,14 @@ function SecondSection() {
 
       {/* tab content */}
       <div>
-        <section>
-          <h2>Cartoon</h2>
-          <img src={CartoonImage} alt='cartoon' />
-        </section>
-        <section>
-          <h2>Food</h2>
-          <img src={FoodImage} alt='food' />
-        </section>
-        <section>
-          <h2>Movie</h2>
-          <img src={MovieImage} alt='movie' />
-        </section>
-        <section>
-          <h2>Life</h2>
-          <img src={LifeImage} alt='life' />
-        </section>
+        {tabs.map((tab) => {
+          return (
+            <section data-id={tab.key}>
+              <h2>{tab.title}</h2>
+              <img src={CartoonImage} alt={tab.key} />
+            </section>
+          )
+        })}
       </div>
     </div>
   )
