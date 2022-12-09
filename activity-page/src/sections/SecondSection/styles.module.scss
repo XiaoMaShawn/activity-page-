@@ -44,6 +44,8 @@
 
   //tab content
   section {
+    //when u click the tab title, it the tab will not cover the section name, by setting scroll-margin
+    scroll-margin: 56px;
     padding: 16px;
 
     h2 {

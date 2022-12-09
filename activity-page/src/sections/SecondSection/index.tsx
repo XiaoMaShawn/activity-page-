@@ -15,19 +15,23 @@ import classNames from 'classnames'
 const tabs = [
   {
     key: 'cartoon',
-    title: 'Cartoon'
+    title: 'Cartoon',
+    image: CartoonImage
   },
   {
     key: 'food',
-    title: 'Food'
+    title: 'Food',
+    image: FoodImage
   },
   {
     key: 'movie',
-    title: 'Movie'
+    title: 'Movie',
+    image: MovieImage
   },
   {
     key: 'life',
-    title: 'Life'
+    title: 'Life',
+    image: LifeImage
   }
 ]
 
@@ -48,11 +52,30 @@ function SecondSection() {
 
   const onScroll = () => {
     if (secondSectionRef.current) {
+      //fix tab part
       //get the top value of secondSection
       const { top } = secondSectionRef.current.getBoundingClientRect();
       //fix the tab if top == 0
       setIsFixed(top <= 0);
+
+      //highlight the tab title when u scroll to the section
+      //get all the section
+      const sectionNodes = secondSectionRef.current.querySelectorAll('section');
+
+      Array.from(sectionNodes).forEach(sectionEl => {
+        //get the top value of current section
+        const { top } = sectionEl.getBoundingClientRect();
+        //get the key of current section
+        const key = sectionEl.getAttribute('data-id') || '';
+        //set the tab to the current section if it hit the top
+        if (top <= 56) {
+          setActiveTab(key);
+        }
+      })
+
     }
+
+
   }
 
   useEffect(() => {
@@ -83,7 +106,7 @@ function SecondSection() {
           return (
             <section data-id={tab.key}>
               <h2>{tab.title}</h2>
-              <img src={CartoonImage} alt={tab.key} />
+              <img src={tab.image} alt={tab.key} />
             </section>
           )
         })}
