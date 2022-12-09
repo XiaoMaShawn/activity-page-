@@ -1,17 +1,29 @@
 .secondSection {
+  padding-top: 56px;
+  position: relative;
 
   //tab
   ul {
+    position: absolute;
+    top: 0;
+    width: 100%;
     height: 56px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background: #e36c3f;
+
+    //fix the tab part when u scroll to the top
+    &.isFixed {
+      position: fixed;
+    }
 
     li {
       position: relative;
       color: white;
       list-style: none;
 
+      //line under the tab title
       .line {
         position: absolute;
         left: 50%;
