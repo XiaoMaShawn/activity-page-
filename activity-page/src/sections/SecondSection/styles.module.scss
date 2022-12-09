@@ -58,4 +58,41 @@
       border-radius: 6px;
     }
   }
+
+  //button wrapper
+  .btnWrapper {
+    //fix at the bottom of the screen
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 64px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    //search css background liner from internet and copy the code
+    background: rgb(2, 0, 36);
+    background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(243, 240, 240, 1) 0%, rgba(0, 212, 255, 1) 100%);
+    opacity: 0;
+    transform: translateY(64px);
+    transition: opacity .3s, transform .3s;
+
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    img {
+      width: 100px;
+    }
+
+    button {
+      border: none;
+      padding: 8px 16px;
+      border-radius: 50px;
+      color: white;
+      background: #fb7299;
+    }
+  }
 }

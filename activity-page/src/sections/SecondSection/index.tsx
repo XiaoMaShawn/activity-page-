@@ -9,6 +9,7 @@ import CartoonImage from '../../assets/cartoon.jpg'
 import FoodImage from '../../assets/food.jpg'
 import LifeImage from '../../assets/life.jpg'
 import MovieImage from '../../assets/movie.png'
+import LogoImage from '../../assets/logo.png'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
 
@@ -110,6 +111,14 @@ function SecondSection() {
             </section>
           )
         })}
+      </div>
+
+      {/* button at bottom */}
+      <div className={classNames(styles.btnWrapper, { [styles.visible]: isFixed })}>
+        <img src={LogoImage} alt='LOGO' />
+        <a href='https://www.bilibili.tv/en' target="_blank">
+          <button>Open in the APP</button>
+        </a>
       </div>
     </div>
   )
