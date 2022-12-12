@@ -1,10 +1,4 @@
-// import { FC } from "react";
-
-// const FirstSection: FC = () => {
-
-// };
-
-import { FC, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import CartoonImage from '../../assets/cartoon.jpg'
 import FoodImage from '../../assets/food.jpg'
 import LifeImage from '../../assets/life.jpg'
